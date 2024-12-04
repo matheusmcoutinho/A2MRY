@@ -1,0 +1,114 @@
+/* Estilo global */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1b4965;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #ffffff;
+}
+
+/* Centralizando o conteúdo */
+.centered-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+}
+
+/* Container geral do login/cadastro */
+.login-container-geral {
+    background-color: #ffffff;
+    padding: 60px;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+
+/* Container do formulário */
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Logo */
+.a2mryLogo {
+    width: 120px;
+    margin-bottom: 20px;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Caixa de login/cadastro */
+.login-box {
+    width: 100%;
+    color: #000;
+}
+
+/* Estilo dos campos de entrada */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 95%;
+    padding: 13px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+
+/* Estilo do botão */
+button {
+    width: 100%;
+    background-color: #ff4081;
+    color: #ffffff;
+    padding: 12px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+/* Hover no botão */
+button:hover {
+    background-color: #fcf8f9;
+    color: #ff4081;
+}
+
+/* Link de voltar ao login */
+p.redirect-login {
+    margin-top: 20px;
+}
+
+p.redirect-login a {
+    color: #ff4081;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+p.redirect-login a:hover {
+    text-decoration: underline;
+}
+
+/* Estilo adicional para mensagens de erro ou sucesso */
+.erro-senha {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+    display: none;
+}
+
+.sucesso {
+    color: green;
+    font-size: 14px;
+    margin-top: 10px;
+    display: none;
+}
