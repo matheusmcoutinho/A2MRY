@@ -95,6 +95,10 @@ $result = $conn->query("SELECT id, nome, email, data_agendamento, horario, telef
                 <span>Página <?= $page ?> de <?= $total_pages ?></span>
                 <a href="?page=<?= min($total_pages, $page + 1) ?>&search=<?= urlencode($searchTerm) ?>" <?= $page >= $total_pages ? 'style="pointer-events: none; opacity: 0.5;"' : '' ?>>Próxima &raquo;</a>
             </nav>
+
+                        <!-- Botão de voltar para a página inicial -->
+                        <a href="../index.html" class="voltar-home">Voltar para a Página Inicial </a>
+                        
         </section>
     </main>
 

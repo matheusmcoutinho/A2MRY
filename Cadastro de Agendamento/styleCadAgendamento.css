@@ -90,6 +90,8 @@ button.agendar {
     border-radius: 10px;
     border: none;
     cursor: pointer;
+    display: block;
+    margin-bottom: 25px; 
     font-size: 16px;
     transition: all 0.3s ease;
 }
@@ -130,19 +132,19 @@ footer p {
     }
 }
 .voltar-home {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 12px 20px;
-    background-color: #1b4965;
+    width: 100%;
+    background-color: #ff4081;
     color: #ffffff;
-    text-decoration: none;
+    padding: 12px;
     border-radius: 10px;
+    border: none;
+    cursor: pointer;
     font-size: 16px;
-    text-align: center;
+    text-decoration: none;
     transition: all 0.3s ease;
 }
 
 .voltar-home:hover {
     background-color: #fcf8f9;
-    color: #1b4965;
+    color: #ff4081;
 }

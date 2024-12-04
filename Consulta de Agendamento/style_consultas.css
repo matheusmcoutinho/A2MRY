@@ -152,3 +152,44 @@ h2 {
         font-size: 0.8rem;
     }
 }
+
+.voltar-home {
+    display: flex; /* Ativa o Flexbox */
+    justify-content: center; /* Centraliza o texto horizontalmente */
+    align-items: center; /* Centraliza o texto verticalmente */
+    width: 100%; /* Largura total do contêiner pai */
+    max-width: 300px; /* Limite opcional para largura do botão */
+    background-color: #ff4081;
+    color: #ffffff;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none; /* Remove sublinhado se for um link */
+    transition: all 0.3s ease;
+    margin: 25px auto 0 auto; /* Adiciona margem superior de 25px e centraliza horizontalmente */
+}
+
+.voltar-home:hover {
+    background-color: #fcf8f9;
+    color: #ff4081;
+}
+
+.search-container button {
+    background-color: var(--primary-color); /* Cor de fundo */
+    color: var(--text-color-light); /* Cor do texto */
+    padding: 10px 20px; /* Espaçamento interno */
+    border: none; /* Remove a borda padrão */
+    border-radius: 8px; /* Arredondamento dos cantos */
+    font-size: 1rem; /* Tamanho da fonte */
+    cursor: pointer; /* Mostra o cursor de "clique" */
+    transition: background-color 0.3s ease; /* Animação de hover */
+}
+
+.search-container button:hover {
+    background-color: var(--text-color-light); /* Cor de fundo ao passar o mouse */
+    color: var(--primary-color); /* Cor do texto ao passar o mouse */
+}
+
+

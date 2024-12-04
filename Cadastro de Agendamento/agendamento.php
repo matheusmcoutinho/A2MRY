@@ -66,7 +66,7 @@
             </form>
 
             <!-- Botão de voltar para a página inicial -->
-            <a href="index.php" class="voltar-home">Voltar para a Página Inicial</a>
+            <a href="../index.html" class="voltar-home">Voltar para a Página Inicial </a>
 
         </section>
     </main>
