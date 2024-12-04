@@ -1,23 +1,19 @@
-/* Estilização Geral e Responsividade */
-
-/* Centralizar logo no container */
-.logo-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px; /* Espaço abaixo da logo */
-}
-
-.a2mryLogo {
-    max-width: 110px;
-    border-radius: 50%; /* Logo arredondada */
+/* Variáveis de cores e estilos gerais */
+:root {
+    --primary-color: #ff4081;
+    --background-color: #142E45;
+    --text-color-light: #ffffff;
+    --primary-dark: #1b4965;
+    --border-color: #ccc;
+    --disabled-bg: #e0e0e0;
+    --disabled-text: #808080;
 }
 
 /* Corpo principal */
 body {
     font-family: Arial, sans-serif;
-    background-color: #142E45;
-    color: #ffffff;
+    background: var(--background-color);
+    color: var(--text-color-light);
     margin: 0;
     padding: 0;
     display: flex;
@@ -26,27 +22,32 @@ body {
     min-height: 100vh;
 }
 
-/* Container geral com conteúdo */
+/* Container geral */
 .container-geral {
     width: 80%;
     max-width: 800px;
     margin: auto;
     padding: 20px;
-    background: #ffffff;
-    color: #1b4965;
+    background: var(--text-color-light);
+    color: var(--primary-dark);
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     box-sizing: border-box;
 }
 
-/* Cabeçalho */
-header img {
-    max-width: 150px;
-    border-radius: 50%;
-    margin: 20px 0;
+/* Logo */
+.logo-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
 }
 
-/* Título */
+.a2mryLogo {
+    max-width: 110px;
+    border-radius: 50%;
+}
+
+/* Títulos */
 h2 {
     text-align: center;
     font-size: 2rem;
@@ -56,45 +57,23 @@ h2 {
 /* Filtro de pesquisa */
 .search-container {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
     gap: 10px;
     width: 100%;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
 }
 
 .search-container input {
-    width: 70%; /* Ajusta para garantir que o campo de busca tenha a largura adequada */
+    flex: 1;
     padding: 10px;
     font-size: 1rem;
-    border: 1px solid #ccc;
     border-radius: 8px;
+    border: 1px solid var(--border-color);
+    max-width: 500px;
     box-sizing: border-box;
-    max-width: 500px; /* Limita a largura máxima */
 }
 
-.search-container button {
-    padding: 10px 20px;
-    background-color: #ff4081;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.search-container button:hover {
-    background-color: #fcf8f9;
-    color: #ff4081;
-}
-
-.search-container button:focus {
-    outline: 2px solid #ff4081;
-    outline-offset: 2px;
-}
-
-/* Tabela de Agendamentos */
+/* Tabela */
 .table-responsive {
     overflow-x: auto;
 }
@@ -109,8 +88,7 @@ h2 {
 .table td {
     padding: 10px;
     text-align: left;
-    border: 1px solid #ccc;
-    word-wrap: break-word;
+    border: 1px solid var(--border-color);
     font-size: 0.9rem;
 }
 
@@ -118,35 +96,33 @@ h2 {
 .pagination {
     display: flex;
     justify-content: center;
-    align-items: center;
     gap: 10px;
     margin-top: 20px;
 }
 
-.pagination a, .pagination button {
+.pagination a {
     padding: 10px 20px;
-    background-color: #ff4081;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
     font-size: 0.9rem;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: 8px;
+    background: var(--primary-color);
+    color: var(--text-color-light);
     text-decoration: none;
+    transition: background-color 0.3s ease;
 }
 
-.pagination a:hover, .pagination button:hover {
-    background-color: #fcf8f9;
-    color: #ff4081;
+.pagination a:hover {
+    background: var(--text-color-light);
+    color: var(--primary-color);
 }
 
-.pagination button[disabled], .pagination a[style="pointer-events: none;"] {
-    background-color: #e0e0e0;
-    color: #808080;
+.pagination a[style="pointer-events: none;"] {
+    background: var(--disabled-bg);
+    color: var(--disabled-text);
+    pointer-events: none;
     cursor: not-allowed;
 }
 
-/* Responsividade para dispositivos médios */
+/* Responsividade */
 @media (max-width: 768px) {
     h2 {
         font-size: 1.5rem;
@@ -154,15 +130,9 @@ h2 {
 
     .search-container {
         flex-direction: column;
-        gap: 10px;
     }
 
     .search-container input {
-        width: 100%;
-        max-width: 100%;
-    }
-
-    .search-container button {
         width: 100%;
     }
 
@@ -172,76 +142,13 @@ h2 {
     }
 }
 
-/* Responsividade para dispositivos pequenos */
 @media (max-width: 480px) {
     .container-geral {
         padding: 10px;
     }
 
-    .table {
-        font-size: 0.8rem;
-    }
-
-    .pagination button {
+    .pagination a {
         padding: 8px 15px;
         font-size: 0.8rem;
     }
-}
-
-/* Botão no canto superior esquerdo */
-.back-button {
-    position: absolute;
-    top: 20px;  /* Distância do topo */
-    left: 20px; /* Distância da borda esquerda */
-    padding: 10px 20px;
-    background-color: #ff4081;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.back-button:hover {
-    background-color: #fcf8f9;
-    color: #ff4081;
-}
-
-.back-button:focus {
-    outline: 2px solid #ff4081;
-    outline-offset: 2px;
-}
-/* Estilo do botão no canto superior esquerdo */
-.back-button {
-    position: absolute;
-    top: 20px;  /* Distância do topo */
-    left: 20px; /* Distância da borda esquerda */
-    padding: 10px 20px;
-    background-color: #ff4081;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-/* Efeito hover para o botão */
-.back-button:hover {
-    background-color: #fcf8f9;
-    color: #ff4081;
-}
-
-/* Efeito de foco para o botão */
-.back-button:focus {
-    outline: 2px solid #ff4081;
-    outline-offset: 2px;
-}
-
-/* Se o botão estiver desabilitado */
-.back-button:disabled {
-    background-color: #e0e0e0;
-    color: #808080;
-    cursor: not-allowed;
 }

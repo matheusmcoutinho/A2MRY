@@ -2,37 +2,23 @@
 // Incluir o arquivo de conexão com o banco de dados
 include 'db.php';
 
-// Número de registros por página
+// Configuração de paginação e busca
 $records_per_page = 5;
+$page = max((int)($_GET['page'] ?? 1), 1);
+$searchTerm = $_GET['search'] ?? '';
+$searchTermEscaped = $conn->real_escape_string($searchTerm);
 
-// Determina a página atual (se não especificada, começa na página 1)
-$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+// Total de registros
+$total_records = $conn->query("SELECT COUNT(*) AS total FROM agendamentos WHERE nome LIKE '%$searchTermEscaped%'")->fetch_assoc()['total'];
+$total_pages = max(ceil($total_records / $records_per_page), 1);
+$page = min($page, $total_pages);
 
-// Verifica se o botão de busca foi pressionado
-$searchTerm = isset($_GET['search']) ? $_GET['search'] : '';
-
-// Query para contar o total de registros na tabela 'agendamentos', considerando o filtro de busca
-$sql_count = "SELECT COUNT(*) AS total FROM agendamentos WHERE nome LIKE '%$searchTerm%'";
-$result_count = $conn->query($sql_count);
-$row_count = $result_count->fetch_assoc();
-$total_records = $row_count['total'];
-
-// Ajusta a página para evitar valores fora do intervalo (páginas vazias)
-$total_pages = ceil($total_records / $records_per_page);
-if ($page > $total_pages) $page = $total_pages;
-if ($page < 1) $page = 1;
-
-// Calcula o índice para a cláusula OFFSET
+// Offset e consulta principal
 $offset = ($page - 1) * $records_per_page;
-
-// Query para buscar os registros da tabela 'agendamentos' com LIMIT e OFFSET, considerando o filtro de busca
-$sql = "SELECT id, nome, email, data_agendamento, horario, telefone, servico 
-        FROM agendamentos 
-        WHERE nome LIKE '%$searchTerm%' 
-        LIMIT $records_per_page OFFSET $offset";
-
-// Executa a consulta
-$result = $conn->query($sql);
+$result = $conn->query("SELECT id, nome, email, data_agendamento, horario, telefone, servico 
+                        FROM agendamentos 
+                        WHERE nome LIKE '%$searchTermEscaped%' 
+                        LIMIT $records_per_page OFFSET $offset");
 ?>
 
 <!DOCTYPE html>
@@ -49,92 +35,69 @@ $result = $conn->query($sql);
 </head>
 
 <body>
-    <!-- Conteúdo Principal -->
     <main class="container-geral">
-        <!-- Logo e Botão -->
+        <!-- Cabeçalho -->
         <header>
-            <div class="header-container">
-                <!-- Botão para a nova página -->
-                <a href="nova_pagina.php" class="btn-nova-pagina" aria-label="Ir para nova página">Nova Página</a>
-                
-                <!-- Logo -->
-                <div class="logo-container">
-                    <img src="a2mryImg.jpeg" alt="Logo da clínica" class="a2mryLogo" aria-label="Logo da Clínica" loading="lazy">
-                </div>
-            </div>
-        </header>
+    <div class="logo-container">
+        <img src="a2mryImg.jpeg" alt="Logo da clínica" class="a2mryLogo" loading="lazy">
+    </div>
+       </header>
 
-        <section class="container-consultas" aria-labelledby="titulo-consultas">
-            <h2 id="titulo-consultas">Consultas Agendadas</h2>
+
+
+        <!-- Consultas -->
+        <section class="container-consultas">
+            <h2>Consultas Agendadas</h2>
 
             <!-- Filtro de Pesquisa -->
-            <div class="search-container">
-                <form action="" method="get">
-                    <input 
-                        type="text" 
-                        id="searchInput" 
-                        name="search" 
-                        placeholder="Buscar por nome" 
-                        value="<?php echo htmlspecialchars($searchTerm); ?>" 
-                        aria-label="Buscar por nome">
-                    <button type="submit" id="searchButton" aria-label="Buscar tratamento por nome">Buscar</button>
-                </form>
-            </div>
+            <form class="search-container" method="get">
+                <input type="text" name="search" placeholder="Buscar por nome" value="<?= htmlspecialchars($searchTerm) ?>">
+                <button type="submit">Buscar</button>
+            </form>
 
-            <!-- Tabela de Agendamentos -->
+            <!-- Tabela -->
             <div class="table-responsive">
-                <table id="appointmentTable" class="table" aria-describedby="descricao-tabela">
+                <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">Nome</th>
-                            <th scope="col">Data</th>
-                            <th scope="col">Horário</th>
-                            <th scope="col">E-mail</th>
-                            <th scope="col">Telefone</th>
-                            <th scope="col">Serviço</th>
+                            <th>Nome</th>
+                            <th>Data</th>
+                            <th>Horário</th>
+                            <th>E-mail</th>
+                            <th>Telefone</th>
+                            <th>Serviço</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php
-                        // Verifica se existem registros e exibe os resultados
-                        if ($result->num_rows > 0) {
-                            // Loop para exibir cada registro
-                            while ($row = $result->fetch_assoc()) {
-                                echo "<tr>";
-                                echo "<td>" . htmlspecialchars($row["nome"]) . "</td>";
-                                echo "<td>" . htmlspecialchars(date("d/m/Y", strtotime($row["data_agendamento"]))) . "</td>";
-                                echo "<td>" . htmlspecialchars($row["horario"]) . "</td>";
-                                echo "<td>" . htmlspecialchars($row["email"]) . "</td>";
-                                echo "<td>" . htmlspecialchars($row["telefone"]) . "</td>";
-                                echo "<td>" . htmlspecialchars($row["servico"]) . "</td>";
-                                echo "</tr>";
-                            }
-                        } else {
-                            echo "<tr><td colspan='6'>Nenhum agendamento encontrado.</td></tr>";
-                        }
-                        ?>
+                        <?php if ($result->num_rows > 0): ?>
+                            <?php while ($row = $result->fetch_assoc()): ?>
+                                <tr>
+                                    <td><?= htmlspecialchars($row['nome']) ?></td>
+                                    <td><?= htmlspecialchars(date("d/m/Y", strtotime($row['data_agendamento']))) ?></td>
+                                    <td><?= htmlspecialchars($row['horario']) ?></td>
+                                    <td><?= htmlspecialchars($row['email']) ?></td>
+                                    <td><?= htmlspecialchars($row['telefone']) ?></td>
+                                    <td><?= htmlspecialchars($row['servico']) ?></td>
+                                </tr>
+                            <?php endwhile; ?>
+                        <?php else: ?>
+                            <tr>
+                                <td colspan="6">Nenhum agendamento encontrado.</td>
+                            </tr>
+                        <?php endif; ?>
                     </tbody>
                 </table>
             </div>
 
             <!-- Paginação -->
-            <nav class="pagination" aria-label="Navegação por página" aria-live="polite">
-                <!-- Botão Anterior -->
-                <a href="?page=<?php echo max(1, $page - 1); ?>&search=<?php echo urlencode($searchTerm); ?>" id="prevPage" aria-label="Página anterior" 
-                        <?php if ($page <= 1) echo 'style="pointer-events: none; opacity: 0.5;"'; ?>>
-                    &laquo; Anterior
-                </a>
-                <span id="pageInfo">Página <?php echo $page; ?> de <?php echo $total_pages; ?></span>
-                <!-- Botão Próxima -->
-                <a href="?page=<?php echo min($total_pages, $page + 1); ?>&search=<?php echo urlencode($searchTerm); ?>" id="nextPage" aria-label="Próxima página" 
-                        <?php if ($page >= $total_pages) echo 'style="pointer-events: none; opacity: 0.5;"'; ?>>
-                    Próxima &raquo;
-                </a>
+            <nav class="pagination">
+                <a href="?page=<?= max(1, $page - 1) ?>&search=<?= urlencode($searchTerm) ?>" <?= $page <= 1 ? 'style="pointer-events: none; opacity: 0.5;"' : '' ?>>&laquo; Anterior</a>
+                <span>Página <?= $page ?> de <?= $total_pages ?></span>
+                <a href="?page=<?= min($total_pages, $page + 1) ?>&search=<?= urlencode($searchTerm) ?>" <?= $page >= $total_pages ? 'style="pointer-events: none; opacity: 0.5;"' : '' ?>>Próxima &raquo;</a>
             </nav>
         </section>
     </main>
 
-    <!-- Rodapé -->
     <footer>
         <p>&copy; 2024 Clínica A2MRY. Todos os direitos reservados.</p>
     </footer>
@@ -143,6 +106,6 @@ $result = $conn->query($sql);
 </html>
 
 <?php
-// Fecha a conexão com o banco de dados
+// Fecha a conexão com o banco
 $conn->close();
 ?>
