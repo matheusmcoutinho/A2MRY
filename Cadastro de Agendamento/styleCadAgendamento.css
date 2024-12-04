@@ -129,3 +129,20 @@ footer p {
         padding: 10px;
     }
 }
+.voltar-home {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 20px;
+    background-color: #1b4965;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 16px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.voltar-home:hover {
+    background-color: #fcf8f9;
+    color: #1b4965;
+}

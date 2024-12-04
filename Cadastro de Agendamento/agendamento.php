@@ -1,58 +1,3 @@
-<?php
-// Configurações do banco de dados
-$servername = "127.0.0.1";  // Servidor
-$username = "root";         // Usuário
-$password = "";             // Senha
-$dbname = "a2mry";          // Nome do banco de dados
-$port = 2908;               // Porta do MySQL
-
-// Criando a conexão com o banco de dados
-$conn = new mysqli($servername, $username, $password, $dbname, $port);
-
-// Verificando se houve erro na conexão
-if ($conn->connect_error) {
-    die("Conexão falhou: " . $conn->connect_error);
-}
-
-// Verificando se o formulário foi enviado
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Pegando os dados enviados pelo formulário
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $telefone = $_POST['telefone'];
-    $date = $_POST['date'];
-    $time = $_POST['time'];
-    $categoria = $_POST['categoria'];
-
-    // Validando se todos os campos foram preenchidos
-    if (empty($name) || empty($email) || empty($telefone) || empty($date) || empty($time) || empty($categoria)) {
-        die("Todos os campos são obrigatórios.");
-    }
-
-    // Convertendo a data para o formato correto (yyyy-mm-dd) para o MySQL
-    $date = DateTime::createFromFormat('d/m/Y', $date);
-    if ($date) {
-        $date = $date->format('Y-m-d'); // Formato yyyy-mm-dd
-    } else {
-        die("Data inválida.");
-    }
-
-    // Preparando a query de inserção
-    $sql = "INSERT INTO agendamentos (nome, email, telefone, data_agendamento, horario, servico)
-            VALUES ('$name', '$email', '$telefone', '$date', '$time', '$categoria')";
-
-    // Executando a query
-    if ($conn->query($sql) === TRUE) {
-        echo "<p>Agendamento realizado com sucesso!</p>";
-    } else {
-        echo "<p>Erro ao realizar agendamento: " . $conn->error . "</p>";
-    }
-
-    // Fechando a conexão
-    $conn->close();
-}
-?>
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -119,6 +64,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
                 <button class="agendar" type="submit">Agendar</button>
             </form>
+
+            <!-- Botão de voltar para a página inicial -->
+            <a href="index.php" class="voltar-home">Voltar para a Página Inicial</a>
 
         </section>
     </main>
