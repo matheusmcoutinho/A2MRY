@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\xampp\\htdocs\\A2MRY\\ClinicaEsteticaApi\\ClinicaEsteticaApi.csproj": {}
+    "C:\\Users\\mathe\\Documents\\GitHub\\A2MRY\\Funções em Desenvolvimento\\ClinicaEsteticaApi\\ClinicaEsteticaApi.csproj": {}
   },
   "projects": {
-    "C:\\xampp\\htdocs\\A2MRY\\ClinicaEsteticaApi\\ClinicaEsteticaApi.csproj": {
+    "C:\\Users\\mathe\\Documents\\GitHub\\A2MRY\\Funções em Desenvolvimento\\ClinicaEsteticaApi\\ClinicaEsteticaApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\xampp\\htdocs\\A2MRY\\ClinicaEsteticaApi\\ClinicaEsteticaApi.csproj",
+        "projectUniqueName": "C:\\Users\\mathe\\Documents\\GitHub\\A2MRY\\Funções em Desenvolvimento\\ClinicaEsteticaApi\\ClinicaEsteticaApi.csproj",
         "projectName": "ClinicaEsteticaApi",
-        "projectPath": "C:\\xampp\\htdocs\\A2MRY\\ClinicaEsteticaApi\\ClinicaEsteticaApi.csproj",
+        "projectPath": "C:\\Users\\mathe\\Documents\\GitHub\\A2MRY\\Funções em Desenvolvimento\\ClinicaEsteticaApi\\ClinicaEsteticaApi.csproj",
         "packagesPath": "C:\\Users\\mathe\\.nuget\\packages\\",
-        "outputPath": "C:\\xampp\\htdocs\\A2MRY\\ClinicaEsteticaApi\\obj\\",
+        "outputPath": "C:\\Users\\mathe\\Documents\\GitHub\\A2MRY\\Funções em Desenvolvimento\\ClinicaEsteticaApi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
