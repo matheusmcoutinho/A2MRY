@@ -80,7 +80,6 @@ Acesse: http://localhost:8000
 
 📝 ###Licença
 Este projeto está sob a licença MIT.
-Sinta-se livre para usar, modificar e distribuir com atribuição ao autor.
 
 👨‍💻 ###Autor
 Matheus Coutinho
