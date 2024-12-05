@@ -1,16 +1,10 @@
 ---
 title: "A2MRY - Sistema de Agendamentos"
-draft: false
 language: pt-br
-featured_image: images/featured/a2mry-banner.png
 summary: Sistema completo para gerenciamento de agendamentos de serviços estéticos.
 author: Matheus Coutinho
 categories: ["Tecnologia", "Gestão", "Web"]
 tags: ["Sistema Web", "Agendamentos", "PHP", "MySQL", "Desenvolvimento Web"]
-linkandroid: https://link-android-app
-linkios: https://link-ios-app
-linkweb: https://link-web-app
-linkblog: https://link-blog
 linkvideo: https://link-video-tutorial
 ---
 
@@ -22,41 +16,33 @@ linkvideo: https://link-video-tutorial
 
 ## 🌟 **Funcionalidades Principais**
 
-- **Agendamentos Online**: Interface intuitiva para clientes marcarem seus horários.
-- **Gerenciamento de Serviços**: Adicione, edite ou remova serviços disponíveis.
-- **Notificações**: Confirmação e lembretes de agendamento por e-mail.
-- **Relatórios**: Visualize os dados sobre serviços realizados e horários mais agendados.
-- **Responsivo**: Acesse de qualquer dispositivo (PC, tablet ou smartphone).
+- **Agendamentos**: Interface intuitiva para clientes marcarem seus horários.
+
+- **Gesão dos Agendamentos**: Acesse o uma lista com os agendamentos criados.
 
 ---
 
 ## 🛠️ **Tecnologias Utilizadas**
 
 - **Frontend**:  
-  - HTML5, CSS3, JavaScript
-  - Frameworks: Bootstrap
+  - HTML5, CSS3
   
 - **Backend**:  
   - Linguagem: PHP  
   - Banco de Dados: MySQL  
-  - APIs: Envio de e-mails e notificações
-
-- **Outros**:  
-  - Versionamento: GitHub  
-  - Deploy: [GitHub Pages](https://pages.github.com)
 
 ---
 
-## 📸 **Capturas de Tela**
+## 📸 **Capturas Principal**
 
 1. **Tela de Login:**
-   ![Tela de Login](images/screenshots/login.png)
+   ![Tela de Inicio](imagens/screenshots/principal.png)
 
-2. **Dashboard do Administrador:**
-   ![Dashboard](images/screenshots/dashboard.png)
+2. **Tela de Cadastro:**
+   ![Cadastro de Agendamentos](imagens/screenshots/cadastro.png)
 
 3. **Página de Agendamentos:**
-   ![Agendamentos](images/screenshots/agendamentos.png)
+   ![Consuta de Agendamentos](imagens/screenshots/agendas.png)
 
 ---
 
@@ -64,5 +50,5 @@ linkvideo: https://link-video-tutorial
 
 ### 1. Clonar o Repositório
 ```bash
-git clone https://github.com/pires-rodrigo/trabalho-Web-a2mry.git
-cd trabalho-Web-a2mry
+git clone https://github.com/matheusmcoutinho/A2MRY.git
+cd A2MRY
