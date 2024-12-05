@@ -52,4 +52,5 @@ linkvideo: https://link-video-tutorial
 ### 1. Clonar o Repositório
 ```bash
 git clone https://github.com/matheusmcoutinho/A2MRY.git
+git hub static page https://matheusmcoutinho.github.io/A2MRY/
 cd A2MRY
