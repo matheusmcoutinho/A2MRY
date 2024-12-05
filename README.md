@@ -54,16 +54,22 @@ linkvideo: https://link-video-tutorial
 
 
 git clone https://github.com/matheusmcoutinho/A2MRY.git
+
 git hub static page https://matheusmcoutinho.github.io/A2MRY/
+
 cd A2MRY
 
 ### 2. Configurar o Banco de Dados
 Acesse o arquivo db.php e configure as credenciais:
 
 $host = '127.0.0.1';
+
 $user = 'root';
+
 $password = '';
+
 $database = 'a2mry';
+
 $port = 2908;
 
 Importe o arquivo SQL (database.sql) para o MySQL
