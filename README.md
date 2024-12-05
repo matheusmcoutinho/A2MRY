@@ -58,7 +58,6 @@ git hub static page https://matheusmcoutinho.github.io/A2MRY/
 cd A2MRY
 
 ### 2. Configurar o Banco de Dados
-```bash
 Acesse o arquivo db.php e configure as credenciais:
 
 $host = '127.0.0.1';
@@ -79,7 +78,6 @@ php -S localhost:8000
 Acesse: http://localhost:8000
 
 
-
 📝 ###Licença
 Este projeto está sob a licença MIT.
 Sinta-se livre para usar, modificar e distribuir com atribuição ao autor.
@@ -88,4 +86,6 @@ Sinta-se livre para usar, modificar e distribuir com atribuição ao autor.
 Matheus Coutinho
 Desenvolvedor de Sistemas e Estudante de Análise e Desenvolvimento de Sistemas.
 📍 Blumenau, SC - Brasil
+
+```bash
 
