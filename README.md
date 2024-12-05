@@ -89,4 +89,3 @@ Matheus Coutinho
 Desenvolvedor de Sistemas e Estudante de Análise e Desenvolvimento de Sistemas.
 📍 Blumenau, SC - Brasil
 
-```bash
