@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+r5rNnA2HK0=",
+  "dgSpecHash": "4VSUxy3alrk=",
   "success": true,
-  "projectFilePath": "C:\\xampp\\htdocs\\A2MRY\\Funções em Desenvolvimento\\ClinicaEsteticaApi\\ClinicaEsteticaApi.csproj",
+  "projectFilePath": "C:\\Users\\mathe\\Documents\\GitHub\\A2MRY\\Funções em Desenvolvimento\\ClinicaEsteticaApi\\ClinicaEsteticaApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\mathe\\.nuget\\packages\\bouncycastle.cryptography\\2.3.1\\bouncycastle.cryptography.2.3.1.nupkg.sha512",
     "C:\\Users\\mathe\\.nuget\\packages\\google.protobuf\\3.26.1\\google.protobuf.3.26.1.nupkg.sha512",
